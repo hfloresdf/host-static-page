@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despedida de Soltero - San Carlos 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 198, 120, 0.3) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .palm-leaves {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 3rem;
+            color: rgba(34, 197, 94, 0.6);
+            z-index: -1;
+            animation: sway 6s ease-in-out infinite;
+        }
+        
+        .palm-leaves.right {
+            left: auto;
+            right: 10px;
+            animation-delay: -3s;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '🏖️';
+            position: absolute;
+            top: 15px;
+            left: 30px;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .header::after {
+            content: '🎉';
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            animation-delay: 1s;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .day-section {
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 248, 255, 0.8));
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #ff6b6b;
+            position: relative;
+        }
+        
+        .day-section:nth-child(2) {
+            border-left-color: #4ecdc4;
+        }
+        
+        .day-section:nth-child(3) {
+            border-left-color: #45b7d1;
+        }
+        
+        .day-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .day-emoji {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .day-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .day-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7f8c8d;
+        }
+        
+        .activity {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .activity:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .time {
+            font-weight: 700;
+            color: #e74c3c;
+            min-width: 100px;
+            font-size: 0.9rem;
+        }
+        
+        .activity-content {
+            flex: 1;
+            margin-left: 15px;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .activity-details {
+            color: #5a6c7d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        
+        .responsible {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .notes-section {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .notes-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d35400;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notes-title::before {
+            content: '📋';
+            margin-right: 10px;
+        }
+        
+        .note-item {
+            margin-bottom: 10px;
+            color: #8b4513;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media print {
+            .print-btn {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="palm-leaves">🌴</div>
+    <div class="palm-leaves right">🌴</div>
+    
+    <button class="print-btn" onclick="window.print()">📄 Generar PDF</button>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">DESPEDIDA DE SOLTERO</h1>
+            <p class="subtitle">San Carlos • 3-5 Octubre 2024</p>
+        </header>
+        
+        <div class="content">
+            <!-- DÍA 1 -->
+            <section class="day-section">
+                <div class="day-header">
+                    <span class="day-emoji">🚗</span>
+                    <div>
+                        <h2 class="day-title">VIERNES 3 DE OCTUBRE — DÍA 1</h2>
+                        <p class="day-subtitle">Viaje, Desayumer y Bienvenida</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">07:00 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">📍 Reunión en Los 3 Picos</h3>
+                        <p class="activity-details">Cargar gasolina y formar la caravana<br>⚠️ <strong>Importante:</strong> No habrá paradas intermedias</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">07:15 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🛣️ Salida oficial hacia San Carlos</h3>
+                        <p class="activity-details">🎵 Mario Humberto a cargo del playlist oficial de la despedida</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">11:00 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🍳 Desayumer en la playa</h3>
+                        <p class="activity-details">📍 Sunset Bar & Grill (recomendado por ubicación y vista al mar)</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">01:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">📸 Tiempo libre</h3>
+                        <p class="activity-details">Paseo corto por el malecón para fotos</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">03:30 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🛒 Supermercado</h3>
+                        <p class="activity-details">Comprar hielo, botanas y bebidas</p>
+                        <span class="responsible">👥 Responsable: Todos</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">04:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🏠 Check-in en la casa</h3>
+                        <p class="activity-details">Entrega de kits de bienvenida (bote + gallo para cada uno)<br>Asignación de habitaciones</p>
+                        <span class="responsible">🎁 Responsable: Marmotha</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">05:30 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🏊‍♂️ Alberca y relajación</h3>
+                        <p class="activity-details">Música ambiente<br>💦 Competencia de panzasos</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">07:30 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🥩 Cena "Carne Asada del Norte"</h3>
+                        <p class="activity-details">En casa</p>
+                        <span class="responsible">👨‍🍳 Responsable: Gaby</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">09:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🎲 Juegos de fiesta</h3>
+                        <p class="activity-details">Beer pong, flip cup, retos del novio</p>
+                        <span class="responsible">🎯 Responsable: Paz</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">11:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🍻 Opción nocturna</h3>
+                        <p class="activity-details">Salida a La Bartina 64 o Hammerhead's<br>O continuar la fiesta en casa</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- DÍA 2 -->
+            <section class="day-section">
+                <div class="day-header">
+                    <span class="day-emoji">🌊</span>
+                    <div>
+                        <h2 class="day-title">SÁBADO 4 DE OCTUBRE — DÍA 2</h2>
+                        <p class="day-subtitle">Pool Party, Yate y Fiesta en Casa</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">08:30 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🥞 Desayuno en casa</h3>
+                        <p class="activity-details">Huevo con jamón y sándwiches</p>
+                        <span class="responsible">👨‍🍳 Responsable: Heriberto</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">10:00 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🎉 POOL PARTY</h3>
+                        <p class="activity-details">Playlist especial<br>Mucha cerveza fría 🍺</p>
+                        <span class="responsible">🎵 Responsable: Chino</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">01:30 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🦐 Comida ligera</h3>
+                        <p class="activity-details">Mariscos o ceviche estilo Sonora</p>
+                        <span class="responsible">👥 Responsable: Todos</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">03:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">😴 Siesta / Relajación</h3>
+                        <p class="activity-details">Tiempo libre en alberca</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">05:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">⛵ PASEO EN YATE (3 horas)</h3>
+                        <p class="activity-details">Duración: 5:00 PM - 8:00 PM<br>📸 Fotos escénicas • 🍺 Turbo chela<br>🏊‍♂️ Nadar • 🎤 Cantar</p>
+                        <span class="responsible">🚤 Responsable: Daniel</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">08:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🍽️ Cena en casa</h3>
+                        <p class="activity-details">(Directamente después del yate)</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">10:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🎉 FIESTA EN CASA</h3>
+                        <p class="activity-details">Música, juegos y celebración</p>
+                        <span class="responsible">🎉 Responsables: Paz, Daniel</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- DÍA 3 -->
+            <section class="day-section">
+                <div class="day-header">
+                    <span class="day-emoji">👋</span>
+                    <div>
+                        <h2 class="day-title">DOMINGO 5 DE OCTUBRE — DÍA 3</h2>
+                        <p class="day-subtitle">Despedida y Regreso</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">08:30 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">☕ Desayuno ligero</h3>
+                        <p class="activity-details">Restos de la cena y/o huevo con chorizo, café, jugo</p>
+                        <span class="responsible">👨‍🍳 Responsable: Heriberto</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">09:30 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🥂 Brindis de despedida y foto grupal</h3>
+                        <span class="responsible">🥂 Responsable: Heriberto</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">10:00 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">📸 Tiempo libre final</h3>
+                        <p class="activity-details">Última vuelta en playa</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">10:30 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🧳 Empaque y limpieza ligera</h3>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">11:00 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🏠 Check-out</h3>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">11:30 AM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🛣️ Salida rumbo a Navojoa</h3>
+                        <p class="activity-details">Parada opcional para comer en Guaymas</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="time">03:00 PM</div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">🏁 Llegada aproximada a Navojoa</h3>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- NOTAS -->
+            <section class="notes-section">
+                <h3 class="notes-title">NOTAS IMPORTANTES</h3>
+                <div class="note-item"><strong>🍺 Lugares para Referencia:</strong></div>
+                <div class="note-item">• <strong>Desayuno:</strong> Sunset Bar & Grill</div>
+                <div class="note-item">• <strong>Backup nocturno:</strong> La Bartina 64 o Hammerhead's (si cambian de opinión)</div>
+            </section>
+        </div>
+        
+        <footer class="footer">
+            ¡Que viva el novio! 🎉
+        </footer>
+    </div>
+</body>
+</html>
